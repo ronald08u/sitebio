@@ -3,884 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CardioConnect - Red de Apoyo Cardiovascular</title>
+    <title>HealthCare - Red de Apoyo Cardiovascular</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-red: #E63946;
-            --primary-red-dark: #C5303A;
-            --secondary-blue: #457B9D;
-            --accent-coral: #F4A261;
-            --bg-light: #F8F9FA;
-            --bg-white: #FFFFFF;
-            --text-dark: #1D3557;
-            --text-gray: #6C757D;
-            --border-light: #E9ECEF;
-            --success-green: #2A9D8F;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
-            color: var(--text-dark);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Login Screen */
-        .login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            background: linear-gradient(135deg, #E63946 0%, #F4A261 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .login-container::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -250px;
-            right: -250px;
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        .login-container::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            bottom: -200px;
-            left: -200px;
-            animation: pulse 6s ease-in-out infinite 1s;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-        }
-
-        .login-box {
-            background: var(--bg-white);
-            padding: 50px 40px;
-            border-radius: 24px;
-            box-shadow: var(--shadow-lg);
-            max-width: 440px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-            animation: slideUp 0.6s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .login-logo {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .logo-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            10%, 30% { transform: scale(1.1); }
-            20%, 40% { transform: scale(1); }
-        }
-
-        .login-logo h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            color: var(--primary-red);
-            font-weight: 900;
-            margin-bottom: 8px;
-        }
-
-        .login-logo p {
-            color: var(--text-gray);
-            font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid var(--border-light);
-            border-radius: 12px;
-            font-size: 15px;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary-red);
-            box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.1);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .login-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Main App */
-        .app-container {
-            display: none;
-        }
-
-        .app-container.active {
-            display: block;
-        }
-
-        /* Header */
-        .header {
-            background: var(--bg-white);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .header-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .header-logo svg {
-            width: 40px;
-            height: 40px;
-        }
-
-        .header-logo h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            color: var(--primary-red);
-            font-weight: 900;
-        }
-
-        .header-search {
-            flex: 1;
-            max-width: 400px;
-            margin: 0 24px;
-            position: relative;
-        }
-
-        .header-search input {
-            width: 100%;
-            padding: 10px 16px 10px 44px;
-            border: 2px solid var(--border-light);
-            border-radius: 24px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .header-search input:focus {
-            outline: none;
-            border-color: var(--primary-red);
-            box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.08);
-        }
-
-        .header-search svg {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 18px;
-            height: 18px;
-            opacity: 0.5;
-        }
-
-        .header-user {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .user-avatar:hover {
-            transform: scale(1.1);
-        }
-
-        /* Navigation */
-        .nav-container {
-            background: var(--bg-white);
-            border-top: 1px solid var(--border-light);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 99;
-            box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
-        }
-
-        .nav-menu {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-around;
-            padding: 8px 16px;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            padding: 8px 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: var(--text-gray);
-            text-decoration: none;
-            border-radius: 12px;
-            position: relative;
-        }
-
-        .nav-item:hover {
-            background: var(--bg-light);
-            color: var(--primary-red);
-        }
-
-        .nav-item.active {
-            color: var(--primary-red);
-        }
-
-        .nav-item.active::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background: var(--primary-red);
-            border-radius: 0 0 3px 3px;
-        }
-
-        .nav-item svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .nav-item span {
-            font-size: 11px;
-            font-weight: 500;
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 24px 16px 80px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        /* Feed Section */
-        .feed-section {
-            display: none;
-        }
-
-        .feed-section.active {
-            display: block;
-        }
-
-        .welcome-card {
-            background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
-            padding: 32px;
-            border-radius: 20px;
-            color: white;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-md);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .welcome-card::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            top: -100px;
-            right: -50px;
-        }
-
-        .welcome-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .welcome-card p {
-            font-size: 16px;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-
-        .create-post-card {
-            background: var(--bg-white);
-            padding: 24px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 24px;
-        }
-
-        .create-post-input {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .create-post-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-
-        .create-post-input textarea {
-            flex: 1;
-            border: 2px solid var(--border-light);
-            border-radius: 16px;
-            padding: 14px 16px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 15px;
-            resize: none;
-            height: 80px;
-            transition: all 0.3s ease;
-        }
-
-        .create-post-input textarea:focus {
-            outline: none;
-            border-color: var(--primary-red);
-            box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.08);
-        }
-
-        .create-post-actions {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .post-btn {
-            padding: 12px 32px;
-            background: var(--primary-red);
-            color: white;
-            border: none;
-            border-radius: 24px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .post-btn:hover {
-            background: var(--primary-red-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .post-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Post Card */
-        .post-card {
-            background: var(--bg-white);
-            padding: 24px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 16px;
-            transition: all 0.3s ease;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .post-card:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .post-header {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .post-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-        }
-
-        .post-info h4 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 4px;
-        }
-
-        .post-info p {
-            font-size: 13px;
-            color: var(--text-gray);
-        }
-
-        .post-content {
-            margin-bottom: 16px;
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        .post-actions {
-            display: flex;
-            gap: 8px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .action-btn {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px;
-            background: transparent;
-            border: none;
-            border-radius: 12px;
-            color: var(--text-gray);
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .action-btn:hover {
-            background: var(--bg-light);
-            color: var(--primary-red);
-        }
-
-        .action-btn.liked {
-            color: var(--primary-red);
-        }
-
-        .action-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .action-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Groups Sidebar */
-        .groups-sidebar {
-            background: var(--bg-white);
-            padding: 24px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .groups-sidebar h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-
-        .group-item {
-            display: flex;
-            gap: 12px;
-            padding: 12px;
-            border-radius: 12px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .group-item:hover {
-            background: var(--bg-light);
-        }
-
-        .group-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .group-info h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--text-dark);
-        }
-
-        .group-info p {
-            font-size: 12px;
-            color: var(--text-gray);
-        }
-
-        /* Chatbot Heart */
-        .chatbot-container {
-            position: fixed;
-            bottom: 100px;
-            right: 24px;
-            z-index: 200;
-        }
-
-        .heart-avatar {
-            width: 80px;
-            height: 80px;
-            cursor: pointer;
-            animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 4px 16px rgba(230, 57, 70, 0.3));
-            transition: transform 0.3s ease;
-        }
-
-        .heart-avatar:hover {
-            transform: scale(1.1);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .chat-window {
-            position: absolute;
-            bottom: 100px;
-            right: 0;
-            width: 360px;
-            max-height: 500px;
-            background: var(--bg-white);
-            border-radius: 24px;
-            box-shadow: var(--shadow-lg);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .chat-window.active {
-            display: flex;
-            animation: slideUp 0.4s ease-out;
-        }
-
-        .chat-header {
-            padding: 20px;
-            background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .chat-header h3 {
-            flex: 1;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .close-chat {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .close-chat:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .chat-message {
-            display: flex;
-            gap: 12px;
-            animation: messageSlide 0.4s ease-out;
-        }
-
-        @keyframes messageSlide {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .chat-message.user {
-            flex-direction: row-reverse;
-        }
-
-        .chat-message.user .message-bubble {
-            background: var(--primary-red);
-            color: white;
-        }
-
-        .message-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .message-bubble {
-            background: var(--bg-light);
-            padding: 12px 16px;
-            border-radius: 16px;
-            max-width: 70%;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .chat-input-container {
-            padding: 16px;
-            border-top: 1px solid var(--border-light);
-            display: flex;
-            gap: 12px;
-        }
-
-        .chat-input-container input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid var(--border-light);
-            border-radius: 24px;
-            font-size: 14px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .chat-input-container input:focus {
-            outline: none;
-            border-color: var(--primary-red);
-        }
-
-        .send-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--primary-red);
-            border: none;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .send-btn:hover {
-            background: var(--primary-red-dark);
-            transform: scale(1.05);
-        }
-
-        .send-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            .nav-container {
-                position: static;
-                border-top: none;
-                box-shadow: none;
-                background: transparent;
-            }
-
-            .nav-menu {
-                padding: 0;
-                gap: 8px;
-            }
-
-            .nav-item {
-                flex-direction: row;
-                padding: 12px 20px;
-            }
-
-            .nav-item svg {
-                width: 20px;
-                height: 20px;
-            }
-
-            .nav-item span {
-                font-size: 14px;
-            }
-
-            .nav-item.active::after {
-                display: none;
-            }
-
-            .main-content {
-                grid-template-columns: 1fr 320px;
-                padding: 24px 24px 24px;
-            }
-
-            .chatbot-container {
-                bottom: 24px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .header-search {
-                display: none;
-            }
-
-            .nav-item span {
-                display: none;
-            }
-
-            .nav-item svg {
-                width: 28px;
-                height: 28px;
-            }
-
-            .nav-item {
-                padding: 12px;
-            }
-
-            .chat-window {
-                width: calc(100vw - 32px);
-            }
-
-            .groups-sidebar {
-                margin-bottom: 16px;
-            }
-        }
-
-        .hidden {
-            display: none !important;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Login Screen -->
@@ -892,7 +17,7 @@
                     <circle cx="35" cy="30" r="3" fill="white" opacity="0.7"/>
                     <path d="M45 50 Q50 55 55 50" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
                 </svg>
-                <h1>CardioConnect</h1>
+                <h1>HealthCare</h1>
                 <p>Red de Apoyo Cardiovascular</p>
             </div>
             <form id="loginForm">
@@ -905,6 +30,44 @@
                     <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
                 </div>
                 <button type="submit" class="login-btn">Iniciar Sesión</button>
+                <p style="text-align: center; margin-top: 20px; color: var(--text-gray); font-size: 14px;">
+                    ¿No tienes cuenta? <a href="#" id="showRegister" style="color: var(--primary-red); font-weight: 600; text-decoration: none;">Regístrate aquí</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Register Form -->
+        <div class="login-box hidden" id="registerBox">
+            <div class="login-logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 85C50 85 15 60 15 35C15 20 25 15 35 15C42 15 47 19 50 25C53 19 58 15 65 15C75 15 85 20 85 35C85 60 50 85 50 85Z" fill="#E63946"/>
+                    <circle cx="35" cy="30" r="3" fill="white" opacity="0.7"/>
+                    <path d="M45 50 Q50 55 55 50" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+                </svg>
+                <h1>HealthCare</h1>
+                <p>Únete a nuestra comunidad</p>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regUsername">Nombre completo</label>
+                    <input type="text" id="regUsername" placeholder="Ingresa tu nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Correo electrónico</label>
+                    <input type="email" id="regEmail" placeholder="tu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Contraseña</label>
+                    <input type="password" id="regPassword" placeholder="Crea una contraseña segura" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPasswordConfirm">Confirmar contraseña</label>
+                    <input type="password" id="regPasswordConfirm" placeholder="Confirma tu contraseña" required>
+                </div>
+                <button type="submit" class="login-btn">Crear Cuenta</button>
+                <p style="text-align: center; margin-top: 20px; color: var(--text-gray); font-size: 14px;">
+                    ¿Ya tienes cuenta? <a href="#" id="showLogin" style="color: var(--primary-red); font-weight: 600; text-decoration: none;">Inicia sesión</a>
+                </p>
             </form>
         </div>
     </div>
@@ -918,13 +81,13 @@
                     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M50 85C50 85 15 60 15 35C15 20 25 15 35 15C42 15 47 19 50 25C53 19 58 15 65 15C75 15 85 20 85 35C85 60 50 85 50 85Z" fill="#E63946"/>
                     </svg>
-                    <h2>CardioConnect</h2>
+                    <h2>HealthCare</h2>
                 </div>
                 <div class="header-search">
                     <svg fill="currentColor" viewBox="0 0 24 24">
                         <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
                     </svg>
-                    <input type="text" placeholder="Buscar en CardioConnect...">
+                    <input type="text" placeholder="Buscar en HealthCare...">
                 </div>
                 <div class="header-user">
                     <div class="user-avatar" id="userAvatar"></div>
@@ -972,6 +135,39 @@
 
         <!-- Main Content -->
         <main class="main-content">
+            <!-- Profile Sidebar (Desktop Only) -->
+            <aside class="profile-sidebar">
+                <div class="profile-banner"></div>
+                <div class="profile-avatar-section">
+                    <div class="profile-avatar-large" id="profileAvatarLarge"></div>
+                    <div class="profile-status">
+                        <span class="profile-status-text">Aprendiendo</span>
+                    </div>
+                </div>
+                <div style="padding: 0 24px;">
+                    <h3 class="profile-name" id="profileName">Usuario</h3>
+                    <p class="profile-role">Miembro de HealthCare</p>
+                </div>
+                <div class="profile-stats">
+                    <div class="profile-stat-item">
+                        <span class="profile-stat-label">Conexiones</span>
+                        <span class="profile-stat-value">500+</span>
+                    </div>
+                    <div class="profile-stat-item">
+                        <span class="profile-stat-label">Visualizaciones del perfil</span>
+                        <span class="profile-stat-value">128</span>
+                    </div>
+                </div>
+                <div class="profile-groups">
+                    <h3>Tus grupos</h3>
+                    <div class="profile-group-item" data-group="rehabilitacion">Rehabilitación Cardíaca - Dr. Miguel Ángel Ruiz</div>
+                    <div class="profile-group-item" data-group="hipertension">Hipertensión y Bienestar - Dra. Laura Martínez</div>
+                    <div class="profile-group-item" data-group="prevencion">Prevención Cardiovascular - Dr. Carlos Mendoza</div>
+                    <div class="profile-group-item" data-group="postinfarto">Apoyo Post-Infarto - Dra. Ana Gutiérrez</div>
+                    <div class="profile-group-item" data-group="colesterol">Manejo del Colesterol - Dr. Fernando Silva</div>
+                </div>
+            </aside>
+
             <!-- Feed Section -->
             <div class="feed-section active" id="feedSection">
                 <div class="welcome-card">
@@ -991,31 +187,49 @@
 
                 <div id="postsContainer">
                     <!-- Posts will be added here -->
-                    <div class="post-card">
+                    <div class="post-card" data-post-id="1">
                         <div class="post-header">
                             <div class="post-avatar">DM</div>
                             <div class="post-info">
-                                <h4>Dr. María González</h4>
+                                <h4 style="cursor: pointer;" class="doctor-name" data-doctor="maria">
+                                    Dra. María González
+                                    <span class="verified-badge">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                        </svg>
+                                    </span>
+                                </h4>
                                 <p>Cardióloga • Hace 2 horas</p>
                             </div>
                         </div>
                         <div class="post-content">
                             Recordatorio importante: La prevención cardiovascular comienza con pequeños cambios diarios. Una caminata de 30 minutos puede marcar una gran diferencia en tu salud cardíaca. ¡Cuida tu corazón! ❤️
                         </div>
+                        <div class="post-interactions">
+                            <span class="interaction-count">
+                                <span class="likes-count">45</span> apoyos
+                            </span>
+                            <span class="interaction-count">
+                                <span class="comments-count">12</span> comentarios
+                            </span>
+                            <span class="interaction-count">
+                                <span class="shares-count">8</span> compartidas
+                            </span>
+                        </div>
                         <div class="post-actions">
-                            <button class="action-btn">
+                            <button class="action-btn like-btn" data-action="like">
                                 <svg fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                                 </svg>
                                 <span>Apoyar</span>
                             </button>
-                            <button class="action-btn">
+                            <button class="action-btn" data-action="comment">
                                 <svg fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
                                 </svg>
                                 <span>Comentar</span>
                             </button>
-                            <button class="action-btn">
+                            <button class="action-btn" data-action="share">
                                 <svg fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
                                 </svg>
@@ -1029,39 +243,39 @@
             <!-- Groups Sidebar (Desktop) / Section (Mobile) -->
             <div class="groups-sidebar">
                 <h3>Grupos Recomendados</h3>
-                <div class="group-item">
+                <div class="group-item" data-group="prevencion">
                     <div class="group-icon">🛡️</div>
                     <div class="group-info">
                         <h4>Prevención Cardiovascular</h4>
-                        <p>2,345 miembros</p>
+                        <p>Dr. Carlos Mendoza • 2,345 miembros</p>
                     </div>
                 </div>
-                <div class="group-item">
+                <div class="group-item" data-group="nutricion">
                     <div class="group-icon">🥗</div>
                     <div class="group-info">
                         <h4>Nutrición para el Corazón</h4>
-                        <p>1,892 miembros</p>
+                        <p>Dra. Patricia Reyes • 1,892 miembros</p>
                     </div>
                 </div>
-                <div class="group-item">
+                <div class="group-item" data-group="actividad">
                     <div class="group-icon">🏃</div>
                     <div class="group-info">
                         <h4>Actividad Física Saludable</h4>
-                        <p>3,156 miembros</p>
+                        <p>Dr. Roberto Torres • 3,156 miembros</p>
                     </div>
                 </div>
-                <div class="group-item">
+                <div class="group-item" data-group="habitos">
                     <div class="group-icon">🧘</div>
                     <div class="group-info">
                         <h4>Hábitos Saludables</h4>
-                        <p>2,678 miembros</p>
+                        <p>Dra. Sandra López • 2,678 miembros</p>
                     </div>
                 </div>
-                <div class="group-item">
+                <div class="group-item" data-group="apoyo">
                     <div class="group-icon">💙</div>
                     <div class="group-info">
                         <h4>Apoyo a Pacientes</h4>
-                        <p>4,521 miembros</p>
+                        <p>Dr. Eduardo Vásquez • 4,521 miembros</p>
                     </div>
                 </div>
             </div>
@@ -1178,201 +392,79 @@
         </div>
     </div>
 
-    <script>
-        // Login functionality
-        const loginForm = document.getElementById('loginForm');
-        const loginScreen = document.getElementById('loginScreen');
-        const appContainer = document.getElementById('appContainer');
-        const welcomeMessage = document.getElementById('welcomeMessage');
-        const userAvatar = document.getElementById('userAvatar');
-        const postAvatar = document.getElementById('postAvatar');
-
-        let currentUser = '';
-
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username && password) {
-                currentUser = username;
-                const initials = username.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-                
-                userAvatar.textContent = initials;
-                postAvatar.textContent = initials;
-                welcomeMessage.textContent = `¡Bienvenido/a, ${username}!`;
-                
-                loginScreen.classList.add('hidden');
-                appContainer.classList.add('active');
-            }
-        });
-
-        // Navigation
-        const navItems = document.querySelectorAll('.nav-item');
-        const feedSection = document.getElementById('feedSection');
-
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navItems.forEach(nav => nav.classList.remove('active'));
-                item.classList.add('active');
-                
-                // For now, only feed is implemented
-                const section = item.dataset.section;
-                if (section !== 'feed') {
-                    alert(`Sección "${item.querySelector('span').textContent}" en desarrollo`);
-                }
-            });
-        });
-
-        // Post creation
-        const publishBtn = document.getElementById('publishBtn');
-        const postInput = document.getElementById('postInput');
-        const postsContainer = document.getElementById('postsContainer');
-
-        publishBtn.addEventListener('click', () => {
-            const content = postInput.value.trim();
-            if (content) {
-                createPost(content);
-                postInput.value = '';
-            }
-        });
-
-        function createPost(content) {
-            const initials = currentUser.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-            const post = document.createElement('div');
-            post.className = 'post-card';
-            post.innerHTML = `
-                <div class="post-header">
-                    <div class="post-avatar">${initials}</div>
-                    <div class="post-info">
-                        <h4>${currentUser}</h4>
-                        <p>Ahora mismo</p>
+    <!-- Doctor Profile Modal -->
+    <div class="modal-overlay" id="doctorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Perfil del Doctor</h2>
+                <button class="modal-close" onclick="closeDoctorModal()">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="doctor-profile-banner">
+                    <div class="doctor-profile-avatar" id="doctorAvatar">DM</div>
+                </div>
+                <div class="doctor-info">
+                    <h3 id="doctorName">
+                        Dra. María González
+                        <span class="verified-badge">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                        </span>
+                    </h3>
+                    <p id="doctorSpecialty">Cardióloga Especialista</p>
+                    <p id="doctorInstitution">Hospital General Central</p>
+                </div>
+                <div class="doctor-stats">
+                    <div class="doctor-stat">
+                        <div class="doctor-stat-value" id="doctorExperience">15</div>
+                        <div class="doctor-stat-label">Años de experiencia</div>
+                    </div>
+                    <div class="doctor-stat">
+                        <div class="doctor-stat-value" id="doctorPatients">2,500+</div>
+                        <div class="doctor-stat-label">Pacientes atendidos</div>
+                    </div>
+                    <div class="doctor-stat">
+                        <div class="doctor-stat-value" id="doctorRating">4.9</div>
+                        <div class="doctor-stat-label">Calificación</div>
                     </div>
                 </div>
-                <div class="post-content">${content}</div>
-                <div class="post-actions">
-                    <button class="action-btn like-btn">
-                        <svg fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                        <span>Apoyar</span>
-                    </button>
-                    <button class="action-btn">
-                        <svg fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
-                        </svg>
-                        <span>Comentar</span>
-                    </button>
-                    <button class="action-btn">
-                        <svg fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-                        </svg>
-                        <span>Compartir</span>
-                    </button>
+                <div class="doctor-bio" id="doctorBio">
+                    <h4 style="margin-bottom: 12px; color: var(--text-dark);">Sobre el doctor</h4>
+                    <p>Especialista en cardiología preventiva con amplia experiencia en el tratamiento de enfermedades cardiovasculares. Dedicada a promover la salud del corazón a través de la educación y el cuidado personalizado.</p>
                 </div>
-            `;
-            postsContainer.insertBefore(post, postsContainer.firstChild);
-            
-            // Add like functionality to new post
-            const likeBtn = post.querySelector('.like-btn');
-            likeBtn.addEventListener('click', function() {
-                this.classList.toggle('liked');
-                triggerHeartReaction();
-            });
-        }
+            </div>
+        </div>
+    </div>
 
-        // Like buttons functionality
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('.action-btn:first-child')) {
-                const btn = e.target.closest('.action-btn');
-                btn.classList.toggle('liked');
-                triggerHeartReaction();
-            }
-        });
+    <!-- Group View -->
+    <div class="group-view" id="groupView">
+        <button class="back-button" onclick="closeGroupView()">
+            <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </svg>
+            Volver
+        </button>
+        <div class="group-header-banner" id="groupBanner">
+            <h2 id="groupTitle">Prevención Cardiovascular</h2>
+            <p id="groupMembers">2,345 miembros</p>
+        </div>
+        <div class="group-moderator">
+            <div class="group-moderator-avatar" id="groupModAvatar">CM</div>
+            <div class="group-moderator-info">
+                <h4 id="groupModName">Dr. Carlos Mendoza</h4>
+                <p>Moderador del grupo • Cardiólogo Preventivo</p>
+            </div>
+        </div>
+        <div id="groupPosts">
+            <!-- Group posts will be loaded here -->
+        </div>
+    </div>
 
-        // Chatbot functionality
-        const heartChatbot = document.getElementById('heartChatbot');
-        const chatWindow = document.getElementById('chatWindow');
-        const closeChat = document.getElementById('closeChat');
-        const chatInput = document.getElementById('chatInput');
-        const sendMessage = document.getElementById('sendMessage');
-        const chatMessages = document.getElementById('chatMessages');
-
-        heartChatbot.addEventListener('click', () => {
-            chatWindow.classList.toggle('active');
-            triggerHeartReaction();
-        });
-
-        closeChat.addEventListener('click', () => {
-            chatWindow.classList.remove('active');
-        });
-
-        sendMessage.addEventListener('click', sendChatMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendChatMessage();
-        });
-
-        function sendChatMessage() {
-            const message = chatInput.value.trim();
-            if (message) {
-                addChatMessage(message, true);
-                chatInput.value = '';
-                
-                // Simulate bot response
-                setTimeout(() => {
-                    const responses = [
-                        '¡Excelente pregunta! La salud cardiovascular es fundamental. Te recomiendo mantener una rutina de ejercicio regular.',
-                        'El ejercicio cardiovascular moderado, como caminar 30 minutos al día, puede reducir significativamente el riesgo de enfermedades del corazón.',
-                        'Una dieta rica en frutas, verduras y grasas saludables es clave para un corazón sano. ¿Te gustaría saber más sobre nutrición?',
-                        'Recuerda: gestionar el estrés es tan importante como el ejercicio físico para tu salud cardiovascular.',
-                        'Los chequeos regulares son esenciales. ¿Cuándo fue tu última revisión cardiovascular?'
-                    ];
-                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-                    addChatMessage(randomResponse, false);
-                    triggerHeartReaction();
-                }, 1000);
-            }
-        }
-
-        function addChatMessage(message, isUser) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `chat-message ${isUser ? 'user' : ''}`;
-            
-            if (isUser) {
-                const initials = currentUser.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-                messageDiv.innerHTML = `
-                    <div class="message-avatar" style="background: linear-gradient(135deg, var(--primary-red), var(--accent-coral)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">${initials}</div>
-                    <div class="message-bubble">${message}</div>
-                `;
-            } else {
-                messageDiv.innerHTML = `
-                    <svg class="message-avatar" viewBox="0 0 100 100" fill="none">
-                        <path d="M50 85C50 85 15 60 15 35C15 20 25 15 35 15C42 15 47 19 50 25C53 19 58 15 65 15C75 15 85 20 85 35C85 60 50 85 50 85Z" fill="#E63946"/>
-                    </svg>
-                    <div class="message-bubble">${message}</div>
-                `;
-            }
-            
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function triggerHeartReaction() {
-            const heart = document.getElementById('heartChatbot');
-            heart.style.transform = 'scale(1.2)';
-            setTimeout(() => {
-                heart.style.transform = 'scale(1)';
-            }, 300);
-        }
-
-        // Trigger heart reaction on various actions
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('.post-btn') || 
-                e.target.closest('.group-item') ||
-                e.target.closest('.nav-item')) {
-                triggerHeartReaction();
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
