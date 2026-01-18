@@ -5,10 +5,10 @@
 }
 
 :root {
-    --primary-red: #E63946;
-    --primary-red-dark: #C5303A;
-    --secondary-blue: #457B9D;
-    --accent-coral: #F4A261;
+    --primary-blue: #92B8FF;
+    --primary-blue-dark: #6B9AE8;
+    --secondary-blue: #AECEFF;
+    --accent-blue: #C6E4FE;
     --bg-light: #F8F9FA;
     --bg-white: #FFFFFF;
     --text-dark: #1D3557;
@@ -35,7 +35,7 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    background: linear-gradient(135deg, #E63946 0%, #F4A261 100%);
+    background: linear-gradient(135deg, #92B8FF 0%, #C6E4FE 100%);
     position: relative;
     overflow: hidden;
 }
@@ -113,7 +113,7 @@ body {
 .login-logo h1 {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
-    color: var(--primary-red);
+    color: #92B8FF;
     font-weight: 900;
     margin-bottom: 8px;
 }
@@ -147,14 +147,14 @@ body {
 
 .form-group input:focus {
     outline: none;
-    border-color: var(--primary-red);
-    box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.1);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(146, 184, 255, 0.15);
 }
 
 .login-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -216,7 +216,7 @@ body {
 .header-logo h2 {
     font-family: 'Playfair Display', serif;
     font-size: 24px;
-    color: var(--primary-red);
+    color: #92B8FF;
     font-weight: 900;
 }
 
@@ -238,8 +238,8 @@ body {
 
 .header-search input:focus {
     outline: none;
-    border-color: var(--primary-red);
-    box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.08);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(146, 184, 255, 0.1);
 }
 
 .header-search svg {
@@ -258,11 +258,47 @@ body {
     gap: 16px;
 }
 
+.premium-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+.premium-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+}
+
+.premium-btn svg {
+    width: 18px;
+    height: 18px;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+}
+
+.premium-btn span {
+    font-weight: 700;
+}
+
 .user-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -312,11 +348,11 @@ body {
 
 .nav-item:hover {
     background: var(--bg-light);
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 .nav-item.active {
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 .nav-item.active::after {
@@ -327,7 +363,7 @@ body {
     transform: translateX(-50%);
     width: 40px;
     height: 3px;
-    background: var(--primary-red);
+    background: var(--primary-blue);
     border-radius: 0 0 3px 3px;
 }
 
@@ -361,8 +397,8 @@ body {
 }
 
 .profile-banner {
-    height: 80px;
-    background: linear-gradient(135deg, #5B8FA3, #6FA695);
+    height: 100px;
+    background: linear-gradient(135deg, #92B8FF, #AECEFF);
     position: relative;
 }
 
@@ -372,7 +408,7 @@ body {
     justify-content: center;
     width: 18px;
     height: 18px;
-    background: var(--secondary-blue);
+    background: #92B8FF;
     border-radius: 50%;
     margin-left: 6px;
     vertical-align: middle;
@@ -396,27 +432,28 @@ body {
 
 .profile-avatar-section {
     text-align: center;
-    margin-top: -40px;
+    margin-top: -48px;
     padding: 0 24px 20px;
+    position: relative;
 }
 
 .profile-avatar-large {
-    width: 80px;
-    height: 80px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #E8745C, #F4A261);
+    background: linear-gradient(135deg, #B20027, #F50036);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-weight: 700;
-    font-size: 28px;
+    font-size: 24px;
     border: 4px solid var(--bg-white);
     box-shadow: var(--shadow-md);
 }
 
 .profile-status {
-    margin-top: 12px;
+    margin-top: 16px;
     padding: 8px 16px;
     background: var(--bg-light);
     border-radius: 12px;
@@ -471,7 +508,7 @@ body {
 
 .profile-stat-value {
     font-size: 16px;
-    color: var(--secondary-blue);
+    color: #92B8FF;
     font-weight: 700;
 }
 
@@ -500,7 +537,7 @@ body {
 
 .profile-group-item:hover {
     background: var(--bg-light);
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 /* Feed Section */
@@ -513,7 +550,7 @@ body {
 }
 
 .welcome-card {
-    background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
     padding: 32px;
     border-radius: 20px;
     color: white;
@@ -567,7 +604,7 @@ body {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -590,8 +627,8 @@ body {
 
 .create-post-input textarea:focus {
     outline: none;
-    border-color: var(--primary-red);
-    box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.08);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(146, 184, 255, 0.1);
 }
 
 .create-post-actions {
@@ -601,7 +638,7 @@ body {
 
 .post-btn {
     padding: 12px 32px;
-    background: var(--primary-red);
+    background: var(--primary-blue);
     color: white;
     border: none;
     border-radius: 24px;
@@ -612,7 +649,7 @@ body {
 }
 
 .post-btn:hover {
-    background: var(--primary-red-dark);
+    background: var(--primary-blue-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -657,7 +694,7 @@ body {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
+    background: linear-gradient(135deg, #92B8FF, #AECEFF);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -703,7 +740,7 @@ body {
 }
 
 .interaction-count.active {
-    color: var(--primary-red);
+    color: var(--primary-blue);
     font-weight: 600;
 }
 
@@ -733,11 +770,11 @@ body {
 
 .action-btn:hover {
     background: var(--bg-light);
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 .action-btn.liked {
-    color: var(--primary-red);
+    color: var(--primary-blue);
 }
 
 .action-btn svg {
@@ -782,7 +819,7 @@ body {
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -816,7 +853,7 @@ body {
     height: 80px;
     cursor: pointer;
     animation: float 3s ease-in-out infinite;
-    filter: drop-shadow(0 4px 16px rgba(230, 57, 70, 0.3));
+    filter: drop-shadow(0 4px 16px rgba(230, 57, 70, 0.4));
     transition: transform 0.3s ease;
 }
 
@@ -850,7 +887,7 @@ body {
 
 .chat-header {
     padding: 20px;
-    background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
     color: white;
     display: flex;
     align-items: center;
@@ -912,7 +949,7 @@ body {
 }
 
 .chat-message.user .message-bubble {
-    background: var(--primary-red);
+    background: var(--primary-blue);
     color: white;
 }
 
@@ -950,14 +987,14 @@ body {
 
 .chat-input-container input:focus {
     outline: none;
-    border-color: var(--primary-red);
+    border-color: var(--primary-blue);
 }
 
 .send-btn {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: var(--primary-red);
+    background: var(--primary-blue);
     border: none;
     color: white;
     cursor: pointer;
@@ -968,7 +1005,7 @@ body {
 }
 
 .send-btn:hover {
-    background: var(--primary-red-dark);
+    background: var(--primary-blue-dark);
     transform: scale(1.05);
 }
 
@@ -1054,7 +1091,7 @@ body {
 
 .doctor-profile-banner {
     height: 120px;
-    background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
+    background: linear-gradient(135deg, #92B8FF, #AECEFF);
     border-radius: 16px;
     margin-bottom: 60px;
     position: relative;
@@ -1064,7 +1101,7 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
+    background: linear-gradient(135deg, #B20027, #F50036);
     border: 4px solid var(--bg-white);
     position: absolute;
     bottom: -50px;
@@ -1118,7 +1155,7 @@ body {
 .doctor-stat-value {
     font-size: 24px;
     font-weight: 700;
-    color: var(--primary-red);
+    color: var(--primary-blue);
     margin-bottom: 4px;
 }
 
@@ -1143,7 +1180,7 @@ body {
 
 .group-header-banner {
     height: 150px;
-    background: linear-gradient(135deg, var(--primary-red), var(--accent-coral));
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
     border-radius: 20px;
     padding: 24px;
     color: white;
@@ -1179,7 +1216,7 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--secondary-blue), var(--success-green));
+    background: linear-gradient(135deg, #B20027, #F50036);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1223,6 +1260,205 @@ body {
 .back-button svg {
     width: 20px;
     height: 20px;
+}
+
+/* Premium Modal Styles */
+.premium-modal-content {
+    max-width: 700px;
+}
+
+.premium-header {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+    padding: 32px 24px;
+    border-radius: 24px 24px 0 0;
+}
+
+.premium-title-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.premium-title-section h2 {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.premium-header .modal-close {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.premium-header .modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.premium-body {
+    padding: 32px 24px;
+}
+
+.premium-intro {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.premium-intro h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.premium-intro p {
+    color: var(--text-gray);
+    font-size: 15px;
+}
+
+.premium-benefits {
+    margin-bottom: 32px;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: var(--bg-light);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.benefit-item:hover {
+    background: white;
+    border-color: #FFD700;
+    transform: translateX(8px);
+    box-shadow: var(--shadow-sm);
+}
+
+.benefit-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+}
+
+.benefit-content h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.benefit-content p {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.premium-pricing {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
+    padding: 32px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.price-tag {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.currency {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: 8px;
+}
+
+.amount {
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--primary-red);
+    line-height: 1;
+    margin: 0 4px;
+}
+
+.period {
+    font-size: 18px;
+    color: var(--text-gray);
+    margin-top: 28px;
+}
+
+.subscribe-btn {
+    width: 100%;
+    padding: 18px 32px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
+}
+
+.subscribe-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(255, 215, 0, 0.4);
+}
+
+.subscribe-btn:active {
+    transform: translateY(0);
+}
+
+.subscribe-btn svg {
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.trial-info {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-gray);
+}
+
+/* Responsive Premium Button */
+@media (max-width: 767px) {
+    .premium-btn span {
+        display: none;
+    }
+
+    .premium-btn {
+        padding: 10px 12px;
+    }
+    
+    .premium-modal-content {
+        max-height: 85vh;
+    }
+    
+    .premium-body {
+        padding: 24px 16px;
+    }
+    
+    .benefit-item {
+        padding: 16px;
+    }
+    
+    .amount {
+        font-size: 42px;
+    }
 }
 
 /* Responsive Design */
